@@ -9,9 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -64,9 +62,7 @@ body {
   margin: 0 0 15px;
 }
 
-.value-box strong {
-  font-size: 24px;
-}
+.value-box strong { font-size: 24px; }
 
 .card {
   background: white;
@@ -120,9 +116,7 @@ button {
   border: 1px solid #bd1919;
 }
 
-button:hover {
-  opacity: 0.92;
-}
+button:hover { opacity: 0.92; }
 
 .message {
   margin-top: 10px;
@@ -132,9 +126,7 @@ button:hover {
   word-break: break-word;
 }
 
-.hidden {
-  display: none !important;
-}
+.hidden { display: none !important; }
 
 .result-box {
   background: #fff0e5;
@@ -180,39 +172,23 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 12px;
-  }
+  body { padding: 12px; }
 
-  .container {
-    max-width: 100%;
-  }
+  .container { max-width: 100%; }
 
-  .header {
-    padding: 28px 15px;
-  }
+  .header { padding: 28px 15px; }
 
-  .header h1 {
-    font-size: 27px;
-  }
+  .header h1 { font-size: 27px; }
 
-  .card {
-    padding: 22px 18px;
-  }
+  .card { padding: 22px 18px; }
 
-  .value-box {
-    padding: 22px 15px;
-  }
+  .value-box { padding: 22px 15px; }
 }
 
 @media (max-width: 360px) {
-  .header h1 {
-    font-size: 24px;
-  }
+  .header h1 { font-size: 24px; }
 
-  .card {
-    padding: 18px 14px;
-  }
+  .card { padding: 18px 14px; }
 }
 </style>
 </head>
@@ -234,71 +210,36 @@ button:hover {
   </section>
 
   <section class="card" id="authArea">
-
     <h2>Entrar</h2>
 
-    <input
-      type="email"
-      id="email"
-      placeholder="Seu e-mail"
-      autocomplete="email"
-    >
+    <input type="email" id="email" placeholder="Seu e-mail" autocomplete="email">
 
-    <input
-      type="password"
-      id="password"
-      placeholder="Sua senha"
-      autocomplete="current-password"
-    >
+    <input type="password" id="password" placeholder="Sua senha" autocomplete="current-password">
 
     <button class="primary" onclick="login()">Entrar</button>
-
     <button class="secondary" onclick="showRegister()">Criar conta</button>
 
     <div id="authMessage"></div>
-
   </section>
 
   <section class="card hidden" id="registerArea">
-
     <h2>Criar conta</h2>
 
-    <input
-      type="text"
-      id="registerName"
-      placeholder="Seu nome completo"
-    >
+    <input type="text" id="registerName" placeholder="Seu nome completo">
 
-    <input
-      type="email"
-      id="registerEmail"
-      placeholder="Seu e-mail"
-      autocomplete="email"
-    >
+    <input type="email" id="registerEmail" placeholder="Seu e-mail" autocomplete="email">
 
-    <input
-      type="password"
-      id="registerPassword"
-      placeholder="Crie uma senha"
-      autocomplete="new-password"
-    >
+    <input type="password" id="registerPassword" placeholder="Crie uma senha" autocomplete="new-password">
 
-    <input
-      type="tel"
-      id="registerWhatsapp"
-      placeholder="Seu WhatsApp (com DDD)"
-    >
+    <input type="tel" id="registerWhatsapp" placeholder="Seu WhatsApp (com DDD)">
 
     <button class="primary" onclick="register()">Cadastrar</button>
-
     <button class="secondary" onclick="showLogin()">Voltar</button>
 
     <div id="registerMessage"></div>
-
   </section>
 
   <section class="card hidden" id="userArea">
-
     <h2 id="welcome"></h2>
 
     <div class="result-box" id="resultArea">
@@ -311,22 +252,15 @@ button:hover {
       Escreva sugestões de presentes que você gostaria de ganhar.
     </p>
 
-    <textarea
-      id="suggestions"
-      placeholder="Ex.: Livro, perfume, camiseta..."
-    ></textarea>
+    <textarea id="suggestions" placeholder="Ex.: Livro, perfume, camiseta..."></textarea>
 
-    <button class="primary" onclick="saveSuggestions()">
-      Salvar sugestões
-    </button>
+    <button class="primary" onclick="saveSuggestions()">Salvar sugestões</button>
 
     <div id="userMessage"></div>
 
     <button class="secondary" onclick="logout()">Sair</button>
-
   </section>
 
-  <!-- RODAPÉ VISÍVEL -->
   <footer class="site-footer">
     <div>🎄 Um Natal cheio de carinho para a Família Oliveira 🎄</div>
     <div class="signature">Por Renato PeOli</div>
@@ -335,7 +269,10 @@ button:hover {
 </div>
 
 <script>
-const SUPABASE_URL = "https://xyulquaefsmxocpqtcu.supabase.co";
+
+// URL CORRETA DO PROJETO SUPABASE
+
+const SUPABASE_URL = "https://xyulquaefsmxocpqitcu.supabase.co";
 
 const SUPABASE_KEY = "sb_publishable_XRfPUDevBsWifVzH54UvVQ_yDfbyx-i";
 
@@ -351,7 +288,6 @@ let currentProfile = null;
 
 function showMessage(elementId, message, color = "#8f1d1d") {
   const element = document.getElementById(elementId);
-
   element.innerHTML = "";
 
   const div = document.createElement("div");
@@ -377,7 +313,6 @@ function showLogin() {
 // CADASTRO
 
 async function register() {
-
   const name = document.getElementById("registerName").value.trim();
   const email = document.getElementById("registerEmail").value.trim();
   const password = document.getElementById("registerPassword").value;
@@ -421,7 +356,6 @@ async function register() {
   }
 
   currentUser = data.user;
-
   await loadUser();
 
   showMessage("registerMessage", "Conta criada com sucesso!", "green");
@@ -430,7 +364,6 @@ async function register() {
 // LOGIN
 
 async function login() {
-
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
 
@@ -452,14 +385,12 @@ async function login() {
   }
 
   currentUser = data.user;
-
   await loadUser();
 }
 
 // CARREGAR USUÁRIO
 
 async function loadUser() {
-
   if (!currentUser) return;
 
   document.getElementById("authArea").classList.add("hidden");
@@ -490,7 +421,6 @@ async function loadUser() {
 // SUGESTÕES
 
 async function loadSuggestions() {
-
   const { data, error } = await supabaseClient
     .from("gift_suggestions")
     .select("*")
@@ -508,7 +438,6 @@ async function loadSuggestions() {
 }
 
 async function saveSuggestions() {
-
   const text = document.getElementById("suggestions").value.trim();
 
   const { data: existing, error: findError } = await supabaseClient
@@ -522,7 +451,6 @@ async function saveSuggestions() {
   }
 
   if (existing && existing.length > 0) {
-
     const { error } = await supabaseClient
       .from("gift_suggestions")
       .delete()
@@ -535,7 +463,6 @@ async function saveSuggestions() {
   }
 
   if (text !== "") {
-
     const lines = text.split("\n").filter(line => line.trim() !== "");
 
     const records = lines.map(line => ({
@@ -559,7 +486,6 @@ async function saveSuggestions() {
 // RESULTADO DO SORTEIO
 
 async function loadResult() {
-
   const { data, error } = await supabaseClient
     .from("draw_results")
     .select("receiver_id")
@@ -613,18 +539,14 @@ async function loadResult() {
 // SUGESTÕES DA PESSOA SORTEADA
 
 async function loadRecipientSuggestions(receiverId) {
-
   const { data, error } = await supabaseClient
     .from("gift_suggestions")
     .select("description")
     .eq("user_id", receiverId);
 
-  if (error || !data || data.length === 0) {
-    return;
-  }
+  if (error || !data || data.length === 0) return;
 
   const suggestions = document.createElement("div");
-
   suggestions.style.marginTop = "20px";
   suggestions.style.textAlign = "left";
 
@@ -634,10 +556,8 @@ async function loadRecipientSuggestions(receiverId) {
   suggestions.appendChild(heading);
 
   data.forEach(item => {
-
     const p = document.createElement("p");
     p.textContent = "🎁 " + item.description;
-
     suggestions.appendChild(p);
   });
 
@@ -647,7 +567,6 @@ async function loadRecipientSuggestions(receiverId) {
 // CONFIGURAÇÕES DO EVENTO
 
 async function loadSettings() {
-
   const { data, error } = await supabaseClient
     .from("event_settings")
     .select("gift_value")
@@ -655,7 +574,6 @@ async function loadSettings() {
     .maybeSingle();
 
   if (!error && data) {
-
     const value = Number(data.gift_value);
 
     document.getElementById("giftValue").textContent =
@@ -669,7 +587,6 @@ async function loadSettings() {
 // SAIR
 
 async function logout() {
-
   await supabaseClient.auth.signOut();
 
   currentUser = null;
@@ -681,13 +598,11 @@ async function logout() {
 
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
-
 }
 
 // VERIFICAR SESSÃO
 
 async function checkSession() {
-
   const { data } = await supabaseClient.auth.getSession();
 
   if (data.session) {
