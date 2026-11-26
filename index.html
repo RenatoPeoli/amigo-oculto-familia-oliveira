@@ -6,140 +6,311 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amigo Oculto - Família Oliveira</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#fff7f2;
-color:#7f1d1d;
+  margin:0;
+  padding:15px;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff7f2;
+  color:#7f1d1d;
+  min-height:100vh;
 }
+
 .container{
-max-width:500px;
-margin:35px auto;
-padding:20px;
+  width:100%;
+  max-width:500px;
+  margin:25px auto;
 }
-.card{
-background:white;
-border-radius:22px;
-padding:25px;
-box-shadow:0 8px 30px rgba(127,29,29,.12);
-}
+
 .header{
-background:linear-gradient(135deg,#b91c1c,#7f1d1d);
-color:white;
-text-align:center;
-padding:28px 20px;
-border-radius:22px;
-margin-bottom:20px;
+  background:linear-gradient(135deg,#b91c1c,#7f1d1d);
+  color:#fff;
+  text-align:center;
+  padding:30px 20px;
+  border-radius:24px;
+  margin-bottom:20px;
 }
-.header h1{margin:10px 0;font-size:30px}
-.header p{margin:0}
-input,textarea,button{
-width:100%;
-padding:14px;
-margin:8px 0;
-border-radius:12px;
-font-size:16px;
+
+.header h1{
+  margin:10px 0;
+  font-size:30px;
 }
-input,textarea{
-border:1px solid #ead5cd;
-background:#fffaf7;
+
+.header p{
+  margin:8px 0;
 }
-button{
-border:none;
-background:#b91c1c;
-color:white;
-font-weight:bold;
-cursor:pointer;
+
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:25px;
+  margin-bottom:20px;
+  box-shadow:0 8px 30px rgba(127,29,29,.10);
 }
-button:hover{background:#991b1b}
-.secondary{
-background:white;
-border:1px solid #b91c1c;
-color:#b91c1c;
-}
-.hidden{display:none}
-.small{text-align:center;font-size:14px}
+
 .gift{
-background:#fce7d6;
-border-radius:15px;
-padding:15px;
-text-align:center;
-margin:15px 0;
+  background:#fce7d6;
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+  margin-bottom:20px;
 }
-h2{color:#991b1b}
+
+.gift h2{
+  margin:12px 0;
+  font-size:25px;
+}
+
+h2,h3{
+  color:#991b1b;
+}
+
+input,textarea,button{
+  width:100%;
+  padding:14px;
+  margin:8px 0;
+  border-radius:12px;
+  font-size:16px;
+  font-family:inherit;
+}
+
+input,textarea{
+  border:1px solid #ead5cd;
+  background:#fffaf7;
+  color:#333;
+}
+
+input:focus,textarea:focus{
+  outline:2px solid #f3b8a8;
+  border-color:#b91c1c;
+}
+
+textarea{
+  resize:vertical;
+}
+
+button{
+  border:none;
+  background:#b91c1c;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+  min-height:48px;
+}
+
+button:hover{
+  background:#991b1b;
+}
+
+.secondary{
+  background:#fff;
+  border:1px solid #b91c1c;
+  color:#b91c1c;
+}
+
+.secondary:hover{
+  background:#fff1ed;
+}
+
+.hidden{
+  display:none !important;
+}
+
 .message{
-padding:12px;
-border-radius:10px;
-margin:10px 0;
-background:#fce7d6;
+  padding:14px;
+  border-radius:12px;
+  margin:12px 0;
+  background:#fce7d6;
+  color:#7f1d1d;
+  overflow-wrap:anywhere;
 }
+
+.result{
+  text-align:center;
+  background:#fff1ed;
+  border:1px solid #f3d0c4;
+}
+
+.result h2{
+  font-size:25px;
+  margin:12px 0;
+}
+
 footer{
-text-align:center;
-margin-top:20px;
-font-size:13px;
-color:#9a5a50;
+  text-align:center;
+  margin:25px 0 10px;
+  font-size:13px;
+  line-height:1.8;
+  color:#9a5a50;
+}
+
+footer strong{
+  display:block;
+  margin-top:5px;
+}
+
+@media (max-width:600px){
+
+  body{
+    padding:8px;
+  }
+
+  .container{
+    width:100%;
+    max-width:100%;
+    margin:10px auto;
+    padding:5px;
+  }
+
+  .header{
+    padding:25px 15px;
+    border-radius:20px;
+  }
+
+  .header h1{
+    font-size:27px;
+  }
+
+  .card{
+    padding:20px;
+    border-radius:18px;
+  }
+
+  .gift{
+    padding:18px;
+  }
+
+  input,textarea,button{
+    font-size:16px;
+    padding:14px;
+  }
+
+  button{
+    min-height:48px;
+  }
+}
+
+@media (max-width:360px){
+
+  .header h1{
+    font-size:24px;
+  }
+
+  .card{
+    padding:16px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-<div class="header">
-<div style="font-size:35px">🎄🎁🎄</div>
-<h1>Amigo Oculto</h1>
-<p>Família Oliveira</p>
-<p style="margin-top:12px">A surpresa mais divertida do Natal! ❤️</p>
-</div>
+  <div class="header">
+    <div style="font-size:38px">🎄 🎁 🎄</div>
+    <h1>Amigo Oculto</h1>
+    <p>Família Oliveira</p>
+    <p>A surpresa mais divertida do Natal! ❤️</p>
+  </div>
 
-<div class="gift">
-<strong>🎁 Valor sugerido</strong>
-<h2 id="giftValue">R$ 150,00</h2>
-</div>
+  <div class="gift">
+    <strong>🎁 Valor sugerido do presente</strong>
+    <h2 id="giftValue">R$ 150,00</h2>
+  </div>
 
-<div class="card" id="authArea">
-<h2 id="authTitle">Entrar</h2>
+  <div class="card" id="authArea">
 
-<div id="registerFields" class="hidden">
-<input id="name" placeholder="Nome completo">
-<input id="whatsapp" placeholder="WhatsApp com DDD">
-</div>
+    <h2 id="authTitle">Entrar</h2>
 
-<input id="email" type="email" placeholder="Seu e-mail">
-<input id="password" type="password" placeholder="Sua senha">
+    <div id="registerFields" class="hidden">
+      <input
+        id="name"
+        type="text"
+        placeholder="Seu nome completo"
+        autocomplete="name"
+      >
 
-<button id="mainButton" onclick="authenticate()">Entrar</button>
+      <input
+        id="whatsapp"
+        type="tel"
+        placeholder="WhatsApp com DDD"
+        autocomplete="tel"
+      >
+    </div>
 
-<button class="secondary" onclick="toggleMode()" id="toggleButton">
-Criar conta
-</button>
+    <input
+      id="email"
+      type="email"
+      placeholder="Seu e-mail"
+      autocomplete="email"
+    >
 
-<div id="authMessage" class="message hidden"></div>
-</div>
+    <input
+      id="password"
+      type="password"
+      placeholder="Sua senha"
+      autocomplete="current-password"
+    >
 
-<div class="card hidden" id="userArea">
-<h2 id="welcome"></h2>
+    <button id="mainButton" onclick="authenticate()">
+      Entrar
+    </button>
 
-<div id="resultArea" class="message">
-🎁 O resultado do sorteio aparecerá aqui quando o sorteio for realizado.
-</div>
+    <button
+      class="secondary"
+      id="toggleButton"
+      onclick="toggleMode()"
+    >
+      Criar conta
+    </button>
 
-<h3>📝 Minha lista de presentes</h3>
-<textarea id="suggestions" rows="5"
-placeholder="Escreva aqui sugestões de presentes que você gostaria de ganhar..."></textarea>
+    <div id="authMessage" class="message hidden"></div>
 
-<button onclick="saveSuggestions()">Salvar sugestões</button>
+  </div>
 
-<div id="userMessage" class="message hidden"></div>
+  <div class="card hidden" id="userArea">
 
-<button class="secondary" onclick="logout()">Sair</button>
-</div>
+    <h2 id="welcome"></h2>
 
-<footer>
-🎄 Um Natal cheio de carinho para a Família Oliveira 🎄
-</footer>
+    <div class="message result" id="resultArea">
+      🎁 O resultado do sorteio aparecerá aqui quando o sorteio for realizado.
+    </div>
+
+    <h3>📝 Minha lista de presentes</h3>
+
+    <p>
+      Escreva algumas sugestões para ajudar seu amigo oculto a escolher seu presente.
+    </p>
+
+    <textarea
+      id="suggestions"
+      rows="5"
+      placeholder="O que você gostaria de ganhar? Escreva suas sugestões aqui..."
+    ></textarea>
+
+    <button onclick="saveSuggestions()">
+      Salvar sugestões
+    </button>
+
+    <div id="userMessage" class="message hidden"></div>
+
+    <button class="secondary" onclick="logout()">
+      Sair da conta
+    </button>
+
+  </div>
+
+  <footer>
+    🎄 Um Natal cheio de carinho para a Família Oliveira 🎄
+    <strong>Por Renato PeOli</strong>
+  </footer>
 
 </div>
 
@@ -148,215 +319,343 @@ const SUPABASE_URL = "https://xyulquaefsmxocpqitcu.supabase.co";
 const SUPABASE_KEY = "sb_publishable_XRfPUDevBsWifVzH54UvVQ_yDfbyx-i";
 
 const supabaseClient = window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
+  SUPABASE_URL,
+  SUPABASE_KEY
 );
 
 let isRegister = false;
 let currentUser = null;
 
 function toggleMode(){
-isRegister = !isRegister;
-document.getElementById("registerFields").classList.toggle("hidden",!isRegister);
-document.getElementById("authTitle").textContent =
-isRegister ? "Criar conta" : "Entrar";
-document.getElementById("mainButton").textContent =
-isRegister ? "Criar conta" : "Entrar";
-document.getElementById("toggleButton").textContent =
-isRegister ? "Já tenho conta - Entrar" : "Criar conta";
-hideMessage("authMessage");
+
+  isRegister = !isRegister;
+
+  document.getElementById("registerFields")
+    .classList.toggle("hidden",!isRegister);
+
+  document.getElementById("authTitle").textContent =
+    isRegister ? "Criar minha conta" : "Entrar";
+
+  document.getElementById("mainButton").textContent =
+    isRegister ? "Criar conta" : "Entrar";
+
+  document.getElementById("toggleButton").textContent =
+    isRegister ? "Já tenho conta - Entrar" : "Criar conta";
+
+  document.getElementById("password").autocomplete =
+    isRegister ? "new-password" : "current-password";
+
+  hideMessage("authMessage");
 }
 
 function showMessage(id,text){
-const el=document.getElementById(id);
-el.textContent=text;
-el.classList.remove("hidden");
+
+  const el = document.getElementById(id);
+
+  el.textContent = text;
+  el.classList.remove("hidden");
 }
 
 function hideMessage(id){
-document.getElementById(id).classList.add("hidden");
+
+  document.getElementById(id).classList.add("hidden");
 }
 
 async function authenticate(){
-const email=document.getElementById("email").value.trim();
-const password=document.getElementById("password").value;
-const msg=document.getElementById("authMessage");
 
-hideMessage("authMessage");
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
 
-if(!email || !password){
-showMessage("authMessage","Preencha e-mail e senha.");
-return;
-}
+  hideMessage("authMessage");
 
-if(isRegister){
-const name=document.getElementById("name").value.trim();
-const whatsapp=document.getElementById("whatsapp").value.trim();
+  if(!email || !password){
 
-if(!name || !whatsapp){
-showMessage("authMessage","Preencha seu nome e WhatsApp.");
-return;
-}
+    showMessage("authMessage","Preencha seu e-mail e senha.");
+    return;
+  }
 
-const {data,error}=await supabaseClient.auth.signUp({
-email,
-password,
-options:{
-data:{
-display_name:name,
-whatsapp:whatsapp
-}
-}
-});
+  if(password.length < 6){
 
-if(error){
-showMessage("authMessage",error.message);
-return;
-}
+    showMessage("authMessage","A senha deve ter pelo menos 6 caracteres.");
+    return;
+  }
 
-showMessage("authMessage",
-"Cadastro realizado! Se solicitado, confirme seu e-mail. Depois faça seu login.");
-return;
+  if(isRegister){
 
-}else{
-const {data,error}=await supabaseClient.auth.signInWithPassword({
-email,
-password
-});
+    const name = document.getElementById("name").value.trim();
+    const whatsapp = document.getElementById("whatsapp").value.trim();
 
-if(error){
-showMessage("authMessage",error.message);
-return;
-}
+    if(!name || !whatsapp){
 
-currentUser=data.user;
-await loadUser();
-}
+      showMessage("authMessage","Preencha seu nome e WhatsApp.");
+      return;
+    }
+
+    const {data,error} = await supabaseClient.auth.signUp({
+
+      email:email,
+      password:password,
+
+      options:{
+        data:{
+          display_name:name,
+          whatsapp:whatsapp
+        }
+      }
+
+    });
+
+    if(error){
+
+      showMessage("authMessage","Não foi possível criar a conta: "+error.message);
+      return;
+    }
+
+    if(data.session){
+
+      currentUser = data.user;
+      await loadUser();
+
+    }else{
+
+      showMessage(
+        "authMessage",
+        "Conta criada! Confira seu e-mail para confirmar o cadastro, caso seja solicitado. Depois volte e faça seu login."
+      );
+    }
+
+  }else{
+
+    const {data,error} = await supabaseClient.auth.signInWithPassword({
+
+      email:email,
+      password:password
+
+    });
+
+    if(error){
+
+      showMessage("authMessage","Não foi possível entrar: "+error.message);
+      return;
+    }
+
+    currentUser = data.user;
+    await loadUser();
+  }
 }
 
 async function loadUser(){
-if(!currentUser){
-const {data}=await supabaseClient.auth.getUser();
-currentUser=data.user;
-}
 
-if(!currentUser)return;
+  if(!currentUser){
 
-document.getElementById("authArea").classList.add("hidden");
-document.getElementById("userArea").classList.remove("hidden");
+    const {data} = await supabaseClient.auth.getUser();
+    currentUser = data.user;
+  }
 
-const name=currentUser.user_metadata?.display_name || currentUser.email;
-document.getElementById("welcome").textContent="Olá, "+name+"! ❤️";
+  if(!currentUser)return;
 
-await loadSuggestions();
-await loadResult();
-await loadSettings();
+  document.getElementById("authArea").classList.add("hidden");
+  document.getElementById("userArea").classList.remove("hidden");
+
+  const name =
+    currentUser.user_metadata?.display_name ||
+    currentUser.email;
+
+  document.getElementById("welcome").textContent =
+    "Olá, "+name+"! ❤️";
+
+  await loadSuggestions();
+  await loadResult();
+  await loadSettings();
 }
 
 async function loadSuggestions(){
-const {data,error}=await supabaseClient
-.from("gift_suggestions")
-.select("*")
-.eq("user_id",currentUser.id)
-.maybeSingle();
 
-if(data){
-document.getElementById("suggestions").value=data.description || "";
-}
+  const {data,error} = await supabaseClient
+    .from("gift_suggestions")
+    .select("*")
+    .eq("user_id",currentUser.id)
+    .maybeSingle();
+
+  if(error){
+
+    console.error(error);
+    return;
+  }
+
+  if(data){
+
+    document.getElementById("suggestions").value =
+      data.description || "";
+  }
 }
 
 async function saveSuggestions(){
-const description=document.getElementById("suggestions").value.trim();
 
-const {data:existing}=await supabaseClient
-.from("gift_suggestions")
-.select("id")
-.eq("user_id",currentUser.id)
-.maybeSingle();
+  const description =
+    document.getElementById("suggestions").value.trim();
 
-let response;
+  hideMessage("userMessage");
 
-if(existing){
-response=await supabaseClient
-.from("gift_suggestions")
-.update({description,updated_at:new Date().toISOString()})
-.eq("user_id",currentUser.id);
-}else{
-response=await supabaseClient
-.from("gift_suggestions")
-.insert({user_id:currentUser.id,description});
-}
+  const {data:existing,error:selectError} = await supabaseClient
+    .from("gift_suggestions")
+    .select("id")
+    .eq("user_id",currentUser.id)
+    .maybeSingle();
 
-if(response.error){
-showMessage("userMessage","Erro ao salvar: "+response.error.message);
-}else{
-showMessage("userMessage","Sugestões salvas com sucesso! 🎁");
-}
+  if(selectError){
+
+    showMessage("userMessage","Não foi possível consultar suas sugestões.");
+    return;
+  }
+
+  let response;
+
+  if(existing){
+
+    response = await supabaseClient
+      .from("gift_suggestions")
+      .update({
+        description:description,
+        updated_at:new Date().toISOString()
+      })
+      .eq("user_id",currentUser.id);
+
+  }else{
+
+    response = await supabaseClient
+      .from("gift_suggestions")
+      .insert({
+        user_id:currentUser.id,
+        description:description
+      });
+  }
+
+  if(response.error){
+
+    showMessage("userMessage","Erro ao salvar suas sugestões.");
+    console.error(response.error);
+
+  }else{
+
+    showMessage("userMessage","Suas sugestões foram salvas! 🎁");
+  }
 }
 
 async function loadResult(){
-const {data,error}=await supabaseClient
-.from("draw_results")
-.select("receiver_id")
-.eq("giver_id",currentUser.id)
-.maybeSingle();
 
-const area=document.getElementById("resultArea");
+  const area = document.getElementById("resultArea");
 
-if(error){
-area.textContent="O sorteio ainda não está disponível.";
-return;
-}
+  const {data,error} = await supabaseClient
+    .from("draw_results")
+    .select("receiver_id")
+    .eq("giver_id",currentUser.id)
+    .maybeSingle();
 
-if(!data){
-area.textContent="🎁 O resultado do sorteio aparecerá aqui quando ele for realizado.";
-return;
-}
+  if(error){
 
-const {data:profile,error:profileError}=await supabaseClient
-.from("profiles")
-.select("display_name")
-.eq("id",data.receiver_id)
-.maybeSingle();
+    area.textContent =
+      "O resultado do sorteio ainda não está disponível.";
+    return;
+  }
 
-if(profile && profile.display_name){
-area.innerHTML="";
-const title=document.createElement("strong");
-title.textContent="🎉 Você tirou:";
-const name=document.createElement("h2");
-name.textContent=profile.display_name;
-area.append(title,name);
-}else{
-area.textContent="Seu sorteio foi realizado!";
-}
+  if(!data){
+
+    area.textContent =
+      "🎁 O resultado do sorteio aparecerá aqui quando ele for realizado.";
+
+    return;
+  }
+
+  const {data:profile,error:profileError} = await supabaseClient
+    .from("profiles")
+    .select("display_name")
+    .eq("id",data.receiver_id)
+    .maybeSingle();
+
+  if(profileError || !profile){
+
+    area.textContent =
+      "Seu sorteio foi realizado, mas não conseguimos carregar o nome.";
+
+    return;
+  }
+
+  area.replaceChildren();
+
+  const title = document.createElement("strong");
+  title.textContent = "🎉 Você tirou:";
+
+  const name = document.createElement("h2");
+  name.textContent = profile.display_name;
+
+  const message = document.createElement("p");
+  message.textContent = "Agora é segredo! 🤫";
+
+  area.append(title,name,message);
 }
 
 async function loadSettings(){
-const {data}=await supabaseClient
-.from("event_settings")
-.select("gift_value,event_name")
-.eq("id",1)
-.maybeSingle();
 
-if(data){
-document.getElementById("giftValue").textContent=
-"R$ "+Number(data.gift_value).toFixed(2).replace(".",",");
-}
+  const {data,error} = await supabaseClient
+    .from("event_settings")
+    .select("gift_value,event_name")
+    .eq("id",1)
+    .maybeSingle();
+
+  if(error){
+
+    console.error(error);
+    return;
+  }
+
+  if(data){
+
+    document.getElementById("giftValue").textContent =
+      Number(data.gift_value).toLocaleString("pt-BR",{
+        style:"currency",
+        currency:"BRL"
+      });
+  }
 }
 
 async function logout(){
-await supabaseClient.auth.signOut();
-currentUser=null;
-document.getElementById("userArea").classList.add("hidden");
-document.getElementById("authArea").classList.remove("hidden");
+
+  const {error} = await supabaseClient.auth.signOut();
+
+  if(error){
+
+    showMessage("userMessage","Não foi possível sair da conta.");
+    return;
+  }
+
+  currentUser = null;
+
+  document.getElementById("userArea").classList.add("hidden");
+  document.getElementById("authArea").classList.remove("hidden");
+
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("suggestions").value = "";
+
+  hideMessage("authMessage");
+  hideMessage("userMessage");
+
+  if(isRegister){
+
+    toggleMode();
+  }
 }
 
 supabaseClient.auth.onAuthStateChange((event,session)=>{
-if(session && !currentUser){
-currentUser=session.user;
-}
+
+  if(session && !currentUser){
+
+    currentUser = session.user;
+  }
 });
 
 </script>
+
 </body>
 </html>
