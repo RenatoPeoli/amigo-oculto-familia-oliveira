@@ -4,485 +4,359 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amigo Oculto Família Oliveira 🎁</title>
-<meta name="theme-color" content="#8e44ad">
-
+<title>Amigo Oculto - Família Oliveira</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box}
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#fff7f2;
+color:#7f1d1d;
 }
-
-body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #f8efff, #fff7f0);
-  color: #333;
-  min-height: 100vh;
+.container{
+max-width:500px;
+margin:35px auto;
+padding:20px;
 }
-
-header {
-  background: linear-gradient(135deg, #8e44ad, #c06cda);
-  color: white;
-  text-align: center;
-  padding: 35px 20px;
+.card{
+background:white;
+border-radius:22px;
+padding:25px;
+box-shadow:0 8px 30px rgba(127,29,29,.12);
 }
-
-header h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+.header{
+background:linear-gradient(135deg,#b91c1c,#7f1d1d);
+color:white;
+text-align:center;
+padding:28px 20px;
+border-radius:22px;
+margin-bottom:20px;
 }
-
-.container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
+.header h1{margin:10px 0;font-size:30px}
+.header p{margin:0}
+input,textarea,button{
+width:100%;
+padding:14px;
+margin:8px 0;
+border-radius:12px;
+font-size:16px;
 }
-
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 25px;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+input,textarea{
+border:1px solid #ead5cd;
+background:#fffaf7;
 }
-
-h2 {
-  color: #8e44ad;
-  margin-bottom: 15px;
+button{
+border:none;
+background:#b91c1c;
+color:white;
+font-weight:bold;
+cursor:pointer;
 }
-
-h3 {
-  margin: 15px 0 10px;
+button:hover{background:#991b1b}
+.secondary{
+background:white;
+border:1px solid #b91c1c;
+color:#b91c1c;
 }
-
-p {
-  line-height: 1.6;
+.hidden{display:none}
+.small{text-align:center;font-size:14px}
+.gift{
+background:#fce7d6;
+border-radius:15px;
+padding:15px;
+text-align:center;
+margin:15px 0;
 }
-
-input, textarea {
-  width: 100%;
-  padding: 13px;
-  margin: 8px 0;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 16px;
+h2{color:#991b1b}
+.message{
+padding:12px;
+border-radius:10px;
+margin:10px 0;
+background:#fce7d6;
 }
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #8e44ad;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-button:hover {
-  background: #70358a;
-}
-
-.secondary {
-  background: #777;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.aviso {
-  background: #f8efff;
-  border-radius: 12px;
-  padding: 15px;
-  margin-top: 15px;
-}
-
-.valor {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #8e44ad;
-  text-align: center;
-  margin: 15px 0;
-}
-
-footer {
-  text-align: center;
-  padding: 25px;
-  color: #777;
-}
-
-#mensagem {
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 10px;
-  display: none;
-}
-
-@media(max-width:480px) {
-  header h1 {
-    font-size: 1.6rem;
-  }
-
-  .container {
-    padding: 12px;
-  }
-
-  .card {
-    padding: 20px;
-  }
+footer{
+text-align:center;
+margin-top:20px;
+font-size:13px;
+color:#9a5a50;
 }
 </style>
 </head>
 
 <body>
+<div class="container">
 
-<header>
-  <h1>🎁 Amigo Oculto</h1>
-  <p>Família Oliveira ❤️</p>
-</header>
+<div class="header">
+<div style="font-size:35px">🎄🎁🎄</div>
+<h1>Amigo Oculto</h1>
+<p>Família Oliveira</p>
+<p style="margin-top:12px">A surpresa mais divertida do Natal! ❤️</p>
+</div>
 
-<main class="container">
+<div class="gift">
+<strong>🎁 Valor sugerido</strong>
+<h2 id="giftValue">R$ 150,00</h2>
+</div>
 
-  <section class="card">
-    <h2>🎄 Nosso encontro</h2>
+<div class="card" id="authArea">
+<h2 id="authTitle">Entrar</h2>
 
-    <p>
-      Prepare-se para muita diversão, risadas e aquele momento
-      de descobrir quem você tirou!
-    </p>
+<div id="registerFields" class="hidden">
+<input id="name" placeholder="Nome completo">
+<input id="whatsapp" placeholder="WhatsApp com DDD">
+</div>
 
-    <div class="valor">R$ 150,00</div>
+<input id="email" type="email" placeholder="Seu e-mail">
+<input id="password" type="password" placeholder="Sua senha">
 
-    <p style="text-align:center">
-      <strong>Valor sugerido do presente</strong>
-    </p>
-  </section>
+<button id="mainButton" onclick="authenticate()">Entrar</button>
 
-  <div id="mensagem"></div>
+<button class="secondary" onclick="toggleMode()" id="toggleButton">
+Criar conta
+</button>
 
-  <section class="card" id="authCard">
+<div id="authMessage" class="message hidden"></div>
+</div>
 
-    <h2>👋 Seja bem-vindo!</h2>
+<div class="card hidden" id="userArea">
+<h2 id="welcome"></h2>
 
-    <div id="cadastroArea">
-      <h3>📝 Criar minha conta</h3>
+<div id="resultArea" class="message">
+🎁 O resultado do sorteio aparecerá aqui quando o sorteio for realizado.
+</div>
 
-      <input
-        id="nomeCadastro"
-        type="text"
-        placeholder="Seu nome completo"
-      >
+<h3>📝 Minha lista de presentes</h3>
+<textarea id="suggestions" rows="5"
+placeholder="Escreva aqui sugestões de presentes que você gostaria de ganhar..."></textarea>
 
-      <input
-        id="telefoneCadastro"
-        type="tel"
-        placeholder="Telefone com DDD"
-      >
+<button onclick="saveSuggestions()">Salvar sugestões</button>
 
-      <input
-        id="senhaCadastro"
-        type="password"
-        placeholder="Crie uma senha (mínimo 6 caracteres)"
-      >
+<div id="userMessage" class="message hidden"></div>
 
-      <button onclick="cadastrar()">
-        Criar conta
-      </button>
-    </div>
-
-    <hr style="margin:25px 0">
-
-    <div id="loginArea">
-      <h3>🔐 Entrar na minha conta</h3>
-
-      <input
-        id="telefoneLogin"
-        type="tel"
-        placeholder="Telefone com DDD"
-      >
-
-      <input
-        id="senhaLogin"
-        type="password"
-        placeholder="Sua senha"
-      >
-
-      <button onclick="entrar()">
-        Entrar
-      </button>
-    </div>
-
-    <div class="aviso">
-      🎁 Cadastre-se para participar do Amigo Oculto da Família Oliveira.
-    </div>
-
-  </section>
-
-  <section class="card hidden" id="painel">
-
-    <h2>🎉 Olá, <span id="nomeUsuario"></span>!</h2>
-
-    <p>Bem-vindo à área do participante.</p>
-
-    <div class="aviso" id="resultado">
-      🎁 O resultado do sorteio aparecerá aqui quando estiver disponível.
-    </div>
-
-    <h2 style="margin-top:25px">
-      🎁 Minha lista de sugestões
-    </h2>
-
-    <p>
-      Escreva os presentes que você gostaria de ganhar.
-    </p>
-
-    <textarea
-      id="sugestoes"
-      placeholder="Ex.: camiseta tamanho M, livro, perfume..."
-    ></textarea>
-
-    <button onclick="salvarSugestoes()">
-      Salvar sugestões
-    </button>
-
-    <button class="secondary" onclick="sair()">
-      Sair da conta
-    </button>
-
-  </section>
-
-  <section class="card">
-    <h2>🎁 Como vai funcionar?</h2>
-
-    <p>1. Faça seu cadastro.</p>
-    <p>2. Entre na sua conta.</p>
-    <p>3. Participe do sorteio.</p>
-    <p>4. Descubra quem você tirou.</p>
-    <p>5. Monte sua lista de sugestões.</p>
-  </section>
-
-</main>
+<button class="secondary" onclick="logout()">Sair</button>
+</div>
 
 <footer>
-  Feito com ❤️ para a Família Oliveira
+🎄 Um Natal cheio de carinho para a Família Oliveira 🎄
 </footer>
+
+</div>
 
 <script>
 const SUPABASE_URL = "https://xyulquaefsmxocpqitcu.supabase.co";
 const SUPABASE_KEY = "sb_publishable_XRfPUDevBsWifVzH54UvVQ_yDfbyx-i";
 
 const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
-let usuarioAtual = null;
+let isRegister = false;
+let currentUser = null;
 
-function mostrarMensagem(texto, erro = false) {
-  const elemento = document.getElementById("mensagem");
-
-  elemento.style.display = "block";
-  elemento.textContent = texto;
-  elemento.style.background = erro ? "#ffe5e5" : "#e6f8e8";
-  elemento.style.color = erro ? "#a00000" : "#276738";
+function toggleMode(){
+isRegister = !isRegister;
+document.getElementById("registerFields").classList.toggle("hidden",!isRegister);
+document.getElementById("authTitle").textContent =
+isRegister ? "Criar conta" : "Entrar";
+document.getElementById("mainButton").textContent =
+isRegister ? "Criar conta" : "Entrar";
+document.getElementById("toggleButton").textContent =
+isRegister ? "Já tenho conta - Entrar" : "Criar conta";
+hideMessage("authMessage");
 }
 
-function formatarTelefone(telefone) {
-  return telefone.replace(/\D/g, "");
+function showMessage(id,text){
+const el=document.getElementById(id);
+el.textContent=text;
+el.classList.remove("hidden");
 }
 
-async function cadastrar() {
-  const nome = document.getElementById("nomeCadastro").value.trim();
-  const telefone = formatarTelefone(
-    document.getElementById("telefoneCadastro").value
-  );
-  const senha = document.getElementById("senhaCadastro").value;
-
-  if (!nome || !telefone || !senha) {
-    mostrarMensagem("Preencha todos os campos.", true);
-    return;
-  }
-
-  if (telefone.length < 10 || telefone.length > 13) {
-    mostrarMensagem("Confira o telefone informado.", true);
-    return;
-  }
-
-  if (senha.length < 6) {
-    mostrarMensagem("A senha deve ter pelo menos 6 caracteres.", true);
-    return;
-  }
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    phone: "+" + telefone,
-    password: senha,
-    options: {
-      data: {
-        display_name: nome
-      }
-    }
-  });
-
-  if (error) {
-    mostrarMensagem("Erro no cadastro: " + error.message, true);
-    return;
-  }
-
-  mostrarMensagem(
-    "Cadastro enviado! Caso o Supabase solicite confirmação do telefone, será necessário ajustar a autenticação."
-  );
+function hideMessage(id){
+document.getElementById(id).classList.add("hidden");
 }
 
-async function entrar() {
-  const telefone = formatarTelefone(
-    document.getElementById("telefoneLogin").value
-  );
-  const senha = document.getElementById("senhaLogin").value;
+async function authenticate(){
+const email=document.getElementById("email").value.trim();
+const password=document.getElementById("password").value;
+const msg=document.getElementById("authMessage");
 
-  if (!telefone || !senha) {
-    mostrarMensagem("Digite seu telefone e senha.", true);
-    return;
-  }
+hideMessage("authMessage");
 
-  const { data, error } = await supabaseClient.auth.signInWithPassword({
-    phone: "+" + telefone,
-    password: senha
-  });
-
-  if (error) {
-    mostrarMensagem("Erro ao entrar: " + error.message, true);
-    return;
-  }
-
-  usuarioAtual = data.user;
-
-  await abrirPainel();
+if(!email || !password){
+showMessage("authMessage","Preencha e-mail e senha.");
+return;
 }
 
-async function abrirPainel() {
-  document.getElementById("authCard").classList.add("hidden");
-  document.getElementById("painel").classList.remove("hidden");
+if(isRegister){
+const name=document.getElementById("name").value.trim();
+const whatsapp=document.getElementById("whatsapp").value.trim();
 
-  const { data, error } = await supabaseClient
-    .from("profiles")
-    .select("display_name")
-    .eq("id", usuarioAtual.id)
-    .single();
-
-  if (!error && data) {
-    document.getElementById("nomeUsuario").textContent =
-      data.display_name || "participante";
-  }
-
-  await carregarSugestoes();
-  await carregarResultado();
+if(!name || !whatsapp){
+showMessage("authMessage","Preencha seu nome e WhatsApp.");
+return;
 }
 
-async function carregarSugestoes() {
-  const { data, error } = await supabaseClient
-    .from("gift_suggestions")
-    .select("description")
-    .eq("user_id", usuarioAtual.id);
-
-  if (!error && data && data.length > 0) {
-    document.getElementById("sugestoes").value =
-      data[0].description || "";
-  }
+const {data,error}=await supabaseClient.auth.signUp({
+email,
+password,
+options:{
+data:{
+display_name:name,
+whatsapp:whatsapp
 }
-
-async function salvarSugestoes() {
-  if (!usuarioAtual) return;
-
-  const descricao = document.getElementById("sugestoes").value.trim();
-
-  const { data: existentes, error: buscaErro } = await supabaseClient
-    .from("gift_suggestions")
-    .select("id")
-    .eq("user_id", usuarioAtual.id);
-
-  if (buscaErro) {
-    mostrarMensagem("Erro ao consultar: " + buscaErro.message, true);
-    return;
-  }
-
-  if (existentes && existentes.length > 0) {
-    const { error } = await supabaseClient
-      .from("gift_suggestions")
-      .update({
-        description: descricao,
-        updated_at: new Date().toISOString()
-      })
-      .eq("user_id", usuarioAtual.id);
-
-    if (error) {
-      mostrarMensagem("Erro ao atualizar: " + error.message, true);
-      return;
-    }
-  } else {
-    const { error } = await supabaseClient
-      .from("gift_suggestions")
-      .insert({
-        user_id: usuarioAtual.id,
-        description: descricao
-      });
-
-    if (error) {
-      mostrarMensagem("Erro ao salvar: " + error.message, true);
-      return;
-    }
-  }
-
-  mostrarMensagem("Sugestões salvas com sucesso! 🎁");
 }
-
-async function carregarResultado() {
-  const { data, error } = await supabaseClient
-    .from("draw_results")
-    .select("receiver_id")
-    .eq("giver_id", usuarioAtual.id)
-    .maybeSingle();
-
-  if (error || !data) {
-    document.getElementById("resultado").textContent =
-      "🎁 O sorteio ainda não está disponível.";
-    return;
-  }
-
-  document.getElementById("resultado").textContent =
-    "🎉 Seu sorteio foi realizado! Estamos preparando a exibição do resultado.";
-}
-
-async function sair() {
-  await supabaseClient.auth.signOut();
-
-  usuarioAtual = null;
-
-  document.getElementById("painel").classList.add("hidden");
-  document.getElementById("authCard").classList.remove("hidden");
-
-  document.getElementById("telefoneLogin").value = "";
-  document.getElementById("senhaLogin").value = "";
-
-  mostrarMensagem("Você saiu da sua conta.");
-}
-
-supabaseClient.auth.onAuthStateChange((evento, sessao) => {
-  if (sessao && !usuarioAtual) {
-    usuarioAtual = sessao.user;
-  }
 });
-</script>
 
+if(error){
+showMessage("authMessage",error.message);
+return;
+}
+
+showMessage("authMessage",
+"Cadastro realizado! Se solicitado, confirme seu e-mail. Depois faça seu login.");
+return;
+
+}else{
+const {data,error}=await supabaseClient.auth.signInWithPassword({
+email,
+password
+});
+
+if(error){
+showMessage("authMessage",error.message);
+return;
+}
+
+currentUser=data.user;
+await loadUser();
+}
+}
+
+async function loadUser(){
+if(!currentUser){
+const {data}=await supabaseClient.auth.getUser();
+currentUser=data.user;
+}
+
+if(!currentUser)return;
+
+document.getElementById("authArea").classList.add("hidden");
+document.getElementById("userArea").classList.remove("hidden");
+
+const name=currentUser.user_metadata?.display_name || currentUser.email;
+document.getElementById("welcome").textContent="Olá, "+name+"! ❤️";
+
+await loadSuggestions();
+await loadResult();
+await loadSettings();
+}
+
+async function loadSuggestions(){
+const {data,error}=await supabaseClient
+.from("gift_suggestions")
+.select("*")
+.eq("user_id",currentUser.id)
+.maybeSingle();
+
+if(data){
+document.getElementById("suggestions").value=data.description || "";
+}
+}
+
+async function saveSuggestions(){
+const description=document.getElementById("suggestions").value.trim();
+
+const {data:existing}=await supabaseClient
+.from("gift_suggestions")
+.select("id")
+.eq("user_id",currentUser.id)
+.maybeSingle();
+
+let response;
+
+if(existing){
+response=await supabaseClient
+.from("gift_suggestions")
+.update({description,updated_at:new Date().toISOString()})
+.eq("user_id",currentUser.id);
+}else{
+response=await supabaseClient
+.from("gift_suggestions")
+.insert({user_id:currentUser.id,description});
+}
+
+if(response.error){
+showMessage("userMessage","Erro ao salvar: "+response.error.message);
+}else{
+showMessage("userMessage","Sugestões salvas com sucesso! 🎁");
+}
+}
+
+async function loadResult(){
+const {data,error}=await supabaseClient
+.from("draw_results")
+.select("receiver_id")
+.eq("giver_id",currentUser.id)
+.maybeSingle();
+
+const area=document.getElementById("resultArea");
+
+if(error){
+area.textContent="O sorteio ainda não está disponível.";
+return;
+}
+
+if(!data){
+area.textContent="🎁 O resultado do sorteio aparecerá aqui quando ele for realizado.";
+return;
+}
+
+const {data:profile,error:profileError}=await supabaseClient
+.from("profiles")
+.select("display_name")
+.eq("id",data.receiver_id)
+.maybeSingle();
+
+if(profile && profile.display_name){
+area.innerHTML="";
+const title=document.createElement("strong");
+title.textContent="🎉 Você tirou:";
+const name=document.createElement("h2");
+name.textContent=profile.display_name;
+area.append(title,name);
+}else{
+area.textContent="Seu sorteio foi realizado!";
+}
+}
+
+async function loadSettings(){
+const {data}=await supabaseClient
+.from("event_settings")
+.select("gift_value,event_name")
+.eq("id",1)
+.maybeSingle();
+
+if(data){
+document.getElementById("giftValue").textContent=
+"R$ "+Number(data.gift_value).toFixed(2).replace(".",",");
+}
+}
+
+async function logout(){
+await supabaseClient.auth.signOut();
+currentUser=null;
+document.getElementById("userArea").classList.add("hidden");
+document.getElementById("authArea").classList.remove("hidden");
+}
+
+supabaseClient.auth.onAuthStateChange((event,session)=>{
+if(session && !currentUser){
+currentUser=session.user;
+}
+});
+
+</script>
 </body>
 </html>
