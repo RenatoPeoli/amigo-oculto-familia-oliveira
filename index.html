@@ -111,7 +111,7 @@ button:hover{
 .secondary{
   background:#fff;
   border:1px solid #b91c1c;
-  color:#b91c1c;
+  color:#b91c1b;
 }
 
 .secondary:hover{
@@ -142,17 +142,26 @@ button:hover{
   margin:12px 0;
 }
 
-footer{
+.site-footer{
+  background:#fff;
   text-align:center;
-  margin:25px 0 10px;
-  font-size:13px;
-  line-height:1.8;
+  padding:22px 15px;
+  margin-top:25px;
+  margin-bottom:10px;
+  border-radius:18px;
+  box-shadow:0 4px 15px rgba(127,29,29,.08);
   color:#9a5a50;
+  font-size:14px;
+  line-height:1.8;
 }
 
-footer strong{
+.site-footer .signature{
   display:block;
-  margin-top:5px;
+  margin-top:12px;
+  color:#b91c1c;
+  font-size:17px;
+  font-weight:bold;
+  letter-spacing:.3px;
 }
 
 @media (max-width:600px){
@@ -193,6 +202,10 @@ footer strong{
 
   button{
     min-height:48px;
+  }
+
+  .site-footer{
+    padding:20px 12px;
   }
 }
 
@@ -307,9 +320,9 @@ footer strong{
 
   </div>
 
-  <footer>
+  <footer class="site-footer">
     🎄 Um Natal cheio de carinho para a Família Oliveira 🎄
-    <strong>Por Renato PeOli</strong>
+    <span class="signature">Por Renato PeOli</span>
   </footer>
 
 </div>
@@ -562,7 +575,7 @@ async function loadResult(){
   if(!data){
 
     area.textContent =
-      "🎁 O resultado do sorteio aparecerá aqui quando ele for realizado.";
+      "🎁 O resultado do sorteio aparecerá aqui quando o sorteio for realizado.";
 
     return;
   }
